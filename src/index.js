@@ -21,17 +21,37 @@ const StyleExample = () => {
   );
 };
 
+// =============== PROPS COMPONENT EXAMPLE ===============
+
+const PropsExample = (props) => {
+  return <h1 onClick={props.printAlert}>{props.content}</h1>;
+};
+
 // Parent Component - The Main Component that shows on the web page. I can put multiple components inside of this component.
 const App = () => {
+  // This is a function example that I can use inside of my component.
+  const printAlert = (message) => {
+    alert(message);
+  };
+
   return (
     <div>
+      {/* importing a component */}
       <StyleExample />
+
+      {/* Regular Text in this Main Component */}
       <div>
         Hello my name is {name + " " + lname} and i am {age} years old.
       </div>
       <div>
         <h2>My Hobbies</h2>
       </div>
+      {/* ================== Props Example ================== */}
+      <PropsExample content="This is a prop example" />
+      <PropsExample
+        content="I can put any text i want"
+        printAlert={printAlert}
+      />
     </div>
   );
 };
